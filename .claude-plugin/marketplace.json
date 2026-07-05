@@ -1,0 +1,12 @@
+{
+  "name": "repo-asset-stocktake",
+  "version": "1.0.0",
+  "description": "Audit a project repo's non-code assets (tool configs, CI workflows, runbooks) for diminished value — Keep/Update/Retire/Merge. Inline consumer-reachability scan + holistic value judgment, no external linter.",
+  "author": "shimo4228",
+  "license": "MIT",
+  "skills": [
+    {
+      "path": "skills/repo-asset-stocktake/SKILL.md"
+    }
+  ]
+}

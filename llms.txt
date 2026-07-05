@@ -1,0 +1,28 @@
+# repo-asset-stocktake
+
+> An Agent Skill that audits a project repository's non-code assets — tool configs, CI/GitHub workflows, runbooks and other docs — for *diminished value* (not just structural validity), and assigns each a Keep / Update / Retire / Merge verdict. It runs in one context: a deterministic inline reachability scan (tier-1) narrows the gray zone, then holistic LLM judgment (tier-2) decides what still earns its place.
+
+The premise: every non-code asset is alive only because something *consumes* it — a tool invocation, a CI trigger, or a human reader reaching it through a link. When the consumer vanishes, or the asset stops serving it, the asset is a review candidate. Linters report whether an asset is valid; this skill reports whether it still means anything.
+
+## Core model
+
+- **Consumer classes (extensible seeds)**: tool-invocation (configs), CI-trigger (workflows), human-navigation (runbooks/docs). Any asset extends the model by naming its consumer.
+- **Two tiers**: tier-1 = structural reachability via inline grep/find (no external linter, no runtime script); tier-2 = semantic value judgment on survivors (no numeric score). An asset can be reachable and still be dead — tier-2 exists for exactly that.
+- **Verdicts**: Keep / Update / Retire / Merge. Phase 4 confirms one-by-one; Retire is soft-delete-first.
+
+## Files
+
+- [SKILL.md](skills/repo-asset-stocktake/SKILL.md): the full skill definition — Modes, Phase 1–4, verdict criteria, reachability recipes, results.json ledger.
+- [README.md](README.md): overview, install, how-it-works, boundary vs structural linters.
+- [README.ja.md](README.ja.md): Japanese README.
+- [CHANGELOG.md](CHANGELOG.md): version history.
+
+## Boundaries
+
+- NOT for dead **code** or code-loaded data files (that is a structural dead-code sweep).
+- NOT for documentation-role overlap across CLAUDE.md / CODEMAPS / ADR / README.
+- Complements, does not replace, structural linters (MegaLinter / actionlint / repolinter), which own YAML/syntax/dead-link validity.
+
+## About
+
+Implements the Maintain phase of the Agent Knowledge Cycle (AKC, DOI 10.5281/zenodo.19200726). Sibling of skill-stocktake (skills) and rules-stocktake (rules). Author: shimo4228. License: MIT.
