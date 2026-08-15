@@ -16,7 +16,7 @@ Audit a project repository's **non-code assets** — configs, CI workflows, runb
 
 > **Design note 1 — every asset has a consumer.** A non-code asset is not alive because it exists; it is alive because something *consumes* it — a tool invoked from a build script, a CI runner fired by an event, a human who reaches it through a link. When the consumer vanishes, or the asset stops serving the consumer it was written for, the asset becomes a review candidate. The config / workflow / runbook classes below are three **seed** consumer-classes, not the closed set — add a row whenever you meet a new consumer.
 
-> **Design note 2 — two tiers, code then judgment.** Reachability is *structural* (decidable by grep/find) so tier-1 enumerates it as code. Value is *semantic* ("does this still mean anything?") so tier-2 leaves it to holistic LLM judgment. This is the harness enumerate/decide split (`when-code-when-llm`) — the deterministic scan narrows the gray zone, the LLM judges only what survives. An asset can be perfectly reachable and still be dead (a workflow that fires but runs a no-op, a runbook that is linked but describes a retired process); tier-1 cannot see that, which is exactly why tier-2 exists.
+> **Design note 2 — two tiers, code then judgment.** Reachability is *structural* (decidable by grep/find) so tier-1 enumerates it as code. Value is *semantic* ("does this still mean anything?") so tier-2 leaves it to holistic LLM judgment. The deterministic scan narrows the gray zone, and the LLM judges only what survives. An asset can be perfectly reachable and still be dead (a workflow that fires but runs a no-op, a runbook that is linked but describes a retired process); tier-1 cannot see that, which is exactly why tier-2 exists.
 
 ## Modes (`$ARGUMENTS`)
 
@@ -96,7 +96,7 @@ Close with a one-line count — total assets, and how many Keep / Update / Retir
 
 **Confirm one by one** (config-gc's confirm-each design). Walk the non-Keep candidates sequentially; show the evidence first, then ask `[y/n/skip]`. **Never batch the approval** — "Retire all 6? [y/n]" defeats the design. `skip` records the verdict without acting.
 
-- **Retire** — soft-delete first, never an autonomous hard-delete (coding-style.md Reversibility Gate). Rename to `<file>.disabled` or move to a repo-local trash; real deletion is a later, separate human step. Offer `adr-writer` when the retirement encodes a decision worth recording.
+- **Retire** — soft-delete first, never an autonomous hard-delete. Rename to `<file>.disabled` or move to a repo-local trash; real deletion is a later, separate human step. Offer `adr-writer` when the retirement encodes a decision worth recording.
 - **Update** — apply mechanical fixes inline after confirm (repair a broken `on:` trigger, fix a dead `uses:` / `run:` ref, delete a stale config key). Flag prose-heavy content rewrites (a runbook describing a changed process) for the user or a writing skill rather than guessing the new content.
 - **Merge** — consolidate into the surviving asset, then soft-delete the absorbed one.
 
