@@ -2,7 +2,7 @@
 
 # repo-asset-stocktake
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shimo4228/repo-asset-stocktake) [![GitMCP](https://img.shields.io/endpoint?url=https://gitmcp.io/badge/shimo4228/repo-asset-stocktake)](https://gitmcp.io/shimo4228/repo-asset-stocktake)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shimo4228/repo-asset-stocktake)
 
 プロジェクトリポジトリの**非コード資産** — ツール設定・CI/GitHub workflow・runbook その他の docs — を*価値の減衰*で棚卸しし、それぞれに **Keep / Update / Retire / Merge** の verdict を付ける [Agent Skill](https://agentskills.io/specification)。
 

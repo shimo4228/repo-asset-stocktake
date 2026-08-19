@@ -2,7 +2,7 @@ Language: English | [日本語](README.ja.md)
 
 # repo-asset-stocktake
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shimo4228/repo-asset-stocktake) [![GitMCP](https://img.shields.io/endpoint?url=https://gitmcp.io/badge/shimo4228/repo-asset-stocktake)](https://gitmcp.io/shimo4228/repo-asset-stocktake)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shimo4228/repo-asset-stocktake)
 
 An [Agent Skill](https://agentskills.io/specification) that audits a project repository's **non-code assets** — tool configs, CI/GitHub workflows, runbooks and other docs — for *diminished value*, and assigns each a **Keep / Update / Retire / Merge** verdict.
 
