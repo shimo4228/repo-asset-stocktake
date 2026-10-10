@@ -6,13 +6,13 @@ The premise: every non-code asset is alive only because something *consumes* it 
 
 ## Core model
 
-- **Consumer classes (extensible seeds)**: tool-invocation (configs), CI-trigger (workflows), human-navigation (runbooks/docs). Any asset extends the model by naming its consumer.
+- **Consumer classes (extensible seeds)**: tool-invocation (configs), CI-trigger (workflows), human-navigation (runbooks/docs). Other non-code assets extend the model by naming their consumer; code-loaded data files are out of scope.
 - **Two tiers**: tier-1 = structural reachability via inline grep/find (no external linter, no runtime script); tier-2 = semantic value judgment on survivors (no numeric score). An asset can be reachable and still be dead — tier-2 exists for exactly that.
 - **Verdicts**: Keep / Update / Retire / Merge. Phase 4 confirms one-by-one; Retire is soft-delete-first.
 
 ## Files
 
-- [SKILL.md](skills/repo-asset-stocktake/SKILL.md): the full skill definition — Modes, Phase 1–4, verdict criteria, reachability recipes, results.json ledger.
+- [SKILL.md](skills/repo-asset-stocktake/SKILL.md): the full skill definition — Modes, Phase 1–4, verdict criteria, reachability recipes, `.repo-asset-stocktake.json` ledger (kept in the audited repo).
 - [README.md](README.md): overview, install, how-it-works, boundary vs structural linters.
 - [README.ja.md](README.ja.md): Japanese README.
 - [CHANGELOG.md](CHANGELOG.md): version history.
@@ -20,9 +20,11 @@ The premise: every non-code asset is alive only because something *consumes* it 
 ## Boundaries
 
 - NOT for dead **code** or code-loaded data files (that is a structural dead-code sweep).
-- NOT for documentation-role overlap across CLAUDE.md / CODEMAPS / ADR / README.
+- NOT for documentation-role overlap across CLAUDE.md / graph.jsonld / ADR / README (that is context-sync).
 - Complements, does not replace, structural linters (MegaLinter / actionlint / repolinter), which own YAML/syntax/dead-link validity.
 
 ## About
 
-Implements the Maintain phase of the Agent Knowledge Cycle (AKC, DOI 10.5281/zenodo.19200726). Sibling of skill-stocktake (skills) and rules-stocktake (rules). Author: shimo4228. License: MIT.
+Implements part of the Maintain phase of the Agent Knowledge Cycle (AKC, DOI 10.5281/zenodo.19200726). Sibling of skill-stocktake (skills) and rules-stocktake (rules). Author: shimo4228 (hub: https://github.com/shimo4228/shimo4228). License: MIT.
+
+Status: active, synced one way from the author's Claude Code harness; also installable with the rest of the cycle via the [akc-cycle](https://github.com/shimo4228/akc-cycle) plugin as `/akc-cycle:repo-asset-stocktake`, so this repository can trail the plugin between syncs.
