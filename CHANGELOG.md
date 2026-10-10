@@ -4,6 +4,12 @@ All notable changes to this skill are documented here. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/); the skill is versioned in its
 `SKILL.md` frontmatter (`metadata.version`).
 
+## [Unreleased]
+
+### Removed
+
+- `.claude-plugin/marketplace.json`. It was not in Claude Code's marketplace format (no `owner`, no `plugins`), so `/plugin marketplace add` on this repo failed. Install the skill as a plugin through [akc-cycle](https://github.com/shimo4228/akc-cycle), which bundles it.
+
 ## [1.0] — initial release
 
 First public release of `repo-asset-stocktake`.
